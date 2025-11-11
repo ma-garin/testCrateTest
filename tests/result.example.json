@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "runId": "sample-run-id",
+  "durationMs": 5200,
+  "steps": [
+    { "action": "open", "target": "https://example.com", "result": "pass" },
+    { "action": "type", "target": "keyboard", "value": "ログイン", "result": "pass" },
+    { "action": "click", "target": "送信ボタン", "result": "pass" },
+    { "action": "assert", "target": "ダッシュボード", "result": "pass" }
+  ]
+}
