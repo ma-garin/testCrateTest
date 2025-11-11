@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ja">
 <head>
@@ -6,36 +5,28 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Japanese DSL E2E Runner (Local GUI)</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 24px; }
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 24px; line-height: 1.5; }
     h1 { font-size: 18px; margin-bottom: 12px; }
     textarea, pre, button { width: 100%; font: inherit; }
-    textarea { min-height: 180px; padding: 8px; }
-    pre { background:#111; color:#eee; padding:12px; overflow:auto; min-height:180px; }
+    textarea { min-height: 220px; padding: 10px; }
+    pre { background:#111; color:#eee; padding:12px; overflow:auto; min-height:200px; white-space: pre-wrap; word-break: break-word; }
+    button { padding: 10px 14px; margin: 8px 0 0; cursor: pointer; }
+    .hint { font-size: 12px; opacity: 0.8; margin: 6px 0 14px; }
   </style>
 </head>
 <body>
   <h1>Japanese DSL E2E Runner — GUI</h1>
+  <div class="hint">
+    JSON を貼り付けて「実行」を押すと <code>POST /run</code> に送信します。<br>
+    例：<code>{"intents":[{"action":"open","url":"https://example.com"},...]}</code>
+  </div>
 
-  <textarea id="payload" spellcheck="false" placeholder="ここにテスト内容（JSON）を入力"></textarea><br><br>
+  <textarea id="payload" spellcheck="false" placeholder="ここにテスト内容（JSON）を入力"></textarea><br>
   <button id="run">実行</button>
   <pre id="result">{}</pre>
 
-  <script>
-    const btn = document.getElementById("run");
-    btn.addEventListener("click", async () => {
-      const body = document.getElementById("payload").value;
-      try {
-        const res = await fetch("/run", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body,
-        });
-        const json = await res.json();
-        document.getElementById("result").textContent = JSON.stringify(json, null, 2);
-      } catch (e) {
-        document.getElementById("result").textContent = e.toString();
-      }
-    });
-  </script>
+  <!-- 外部スクリプトに分離 -->
+  <script src="/app.js"></script>
 </body>
 </html>
