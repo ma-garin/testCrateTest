@@ -1,0 +1,35 @@
+{
+  "name": "create-auto-test",
+  "version": "0.2.0",
+  "description": "Run Japanese DSL E2E scenarios through a Fastify API and browser GUI",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node --env-file=.env dist/server.js",
+    "dev": "tsx watch --env-file=.env src/server.ts",
+    "lint": "echo \"No lint configured\"",
+    "test": "echo \"No automated tests configured\"",
+    "playwright:install": "npx playwright install --with-deps"
+  },
+  "engines": {
+    "node": ">=23"
+  },
+  "dependencies": {
+    "@fastify/static": "^7.0.1",
+    "bullmq": "^4.12.0",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "ioredis": "^5.4.1",
+    "js-yaml": "^4.1.0",
+    "pino": "^8.17.1",
+    "playwright": "^1.42.1",
+    "uuid": "^9.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3"
+  }
+}

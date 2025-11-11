@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>E2E Runner</title>
+</head>
+<body>
+  <h2>日本語DSLテスト実行</h2>
+  <textarea id="dsl" rows="6" cols="60">ページを開く: https://example.com</textarea><br />
+  <button onclick="run()">実行</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function run() {
+      const res = await fetch("/run", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: document.getElementById("dsl").value
+      });
+      const text = await res.text();
+      document.getElementById("result").textContent = text;
+    }
+  </script>
+</body>
+</html>
