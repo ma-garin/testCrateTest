@@ -164,6 +164,15 @@ CreateAutoTest/
 - `log.jsonl` : ステップごとのログ
 - `result.json` : 実行結果サマリ（API経由で取得可能）
 
+## テスト
+
+型チェックとユニットテストを以下のコマンドで実行できます。
+
+```bash
+npm run lint   # TypeScriptの型チェック
+npm run test   # DSLパーサーのユニットテスト
+```
+
 ## 開発メモ
 
 - Playwrightの依存関係インストールには `npm run playwright:install` を実行してください。

@@ -8,8 +8,8 @@
     "build": "tsc -p tsconfig.json",
     "start": "node --env-file=.env dist/server.js",
     "dev": "tsx watch --env-file=.env src/server.ts",
-    "lint": "echo \"No lint configured\"",
-    "test": "echo \"No automated tests configured\"",
+    "lint": "tsc --noEmit --pretty false",
+    "test": "tsx --test tests/parser.test.ts",
     "playwright:install": "npx playwright install --with-deps"
   },
   "engines": {

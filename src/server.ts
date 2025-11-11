@@ -17,9 +17,9 @@ export async function buildServer() {
   app.decorate("runQueue", createRunQueue());
 
   // Serve the browser GUI (public/index.html)
-  await app.register(fastifyStatic, {
+  await app.register(fastifyStatic as any, {
     root: path.join(__dirname, "../public"),
-  });
+  } as any);
 
   await app.register(runRoutes);
   await app.register(resultsRoutes);

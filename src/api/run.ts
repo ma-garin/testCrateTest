@@ -23,7 +23,7 @@ function extractDslSource(body: RunBody | string): unknown {
 }
 
 export default async function runRoutes(fastify: FastifyInstance & { runQueue: RunQueue }) {
-  fastify.addContentTypeParser("text/plain", { parseAs: "string" }, async (_request, body) => body);
+  fastify.addContentTypeParser("text/plain", { parseAs: "string" } as any, async (_request, body) => body);
 
   fastify.post("/run", async (request, reply) => {
     const body = (request.body ?? {}) as RunBody | string;
